@@ -8,6 +8,9 @@ https://www.tensorflow.org/hub/tutorials/movenet
 let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
+function preload(){
+	fishImg = loadImage("nose.png");//載入圖片檔案
+}
 async function init() {
   const detectorConfig = {
     modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
@@ -99,7 +102,8 @@ if(partR.score>0.1)
     {
       fill("#ff0000")
       ellipse(partA.x,partA.y,50)
-      fill("#")
+      fill("#ffffff")
+       image(noseImg,partA.x-25,partA.y-25,50,50)
     }
     // shoulders to hips
     partA = pose.keypoints[5];
