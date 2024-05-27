@@ -54,7 +54,7 @@ function draw() {
   image(cam, 0, 0);
 }
 
-function drawSkeleton() {
+function drawSkeleton() {  //偵測出各點
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
@@ -79,6 +79,27 @@ function drawSkeleton() {
     if (partA.score > 0.1 && partB.score > 0.1) {
       line(partA.x, partA.y, partB.x, partB.y);
       
+    }
+
+  //eye
+partL = pose.keypoints[1];
+partR = pose.keypoints[2];
+if(partL.score>0.1)
+{
+  ellipse(partL.x,partL.y,50)
+}
+
+if(partR.score>0.1)
+  {
+    ellipse(partR.x,partR.y,50)
+  }
+  //
+  partA = pose.keypoints[0];
+  if(partA.score>0.1)
+    {
+      fill("#ff0000")
+      ellipse(partA.x,partA.y,50)
+      fill("#")
     }
     // shoulders to hips
     partA = pose.keypoints[5];
